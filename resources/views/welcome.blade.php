@@ -4,26 +4,27 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>James - Web & App developer</title>
-        <script src="assets/js/vendors/color-modes.js"></script>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>{{ config('app.name'). ' | Desarrollamos el futuro, hoy' }}</title>
+        <script src="{{ asset('assets/js/vendors/color-modes.js') }}"></script>
         <!-- Favicon icon-->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/template/favicon-gradient.svg" />
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/imgs/template/favicon-gradient.svg') }}" />
         <!-- Libs CSS -->
-        <link rel="stylesheet" href="assets/css/vendors/bootstrap.min.css" />
-        <link rel="stylesheet" href="assets/css/vendors/swiper-bundle.min.css" />
-        <link rel="stylesheet" href="assets/css/vendors/aos.css" />
-        <link rel="stylesheet" href="assets/css/vendors/odometer.css" />
-        <link rel="stylesheet" href="assets/css/vendors/carouselTicker.css" />
-        <link rel="stylesheet" href="assets/css/vendors/magnific-popup.css" />
-        <link rel="stylesheet" href="assets/fonts/remixicon/remixicon.css" />
-        <link rel="stylesheet" href="assets/fonts/satoshi/satoshi.css" />
+        <link rel="stylesheet" href="{{ asset('assets/css/vendors/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/vendors/swiper-bundle.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/vendors/aos.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/vendors/odometer.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/vendors/carouselTicker.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/vendors/magnific-popup.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/fonts/remixicon/remixicon.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/fonts/satoshi/satoshi.css') }}" />
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@400..900&family=Urbanist:wght@100..900&display=swap" rel="stylesheet" />
         <!-- Main CSS -->
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+        <link href="{{ asset('assets/fonts/bootstrpa-icons/bootstrap-icons.min.css') }}" rel="stylesheet">
 
       
     </head>
@@ -48,8 +49,8 @@
                         <i class="ri-menu-2-line"></i>
                     </a>
                     <div class="container py-3 px-4">
-                        <a class="navbar-brand d-flex main-logo align-items-center" href="index-2.html">
-                            <img src="assets/imgs/home-page-2/template/favicon.svg" alt="zelio" />
+                        <a class="navbar-brand d-flex main-logo align-items-center" href="{{ route('welcome') }}">
+                            <img src="{{ asset('assets/imgs/home-page-2/template/favicon.svg') }}" alt="Person Technology" />
                             <span  class="fs-4 ms-2" >PersonTechnology</span>
                         </a>
                         <div class="d-none d-lg-flex">
@@ -58,7 +59,7 @@
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                     <!-- INICIO -->
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#home">Inicio</a>
+                                        <a class="nav-link {{ Route::is('welcome')?'active':'' }}" href="{{ route('welcome') }}">Inicio</a>
                                     </li>
 
                                     <!-- NOSOTROS -->
@@ -103,20 +104,32 @@
                             </div>
                         </div>
                         <div class="navbar-social d-flex align-items-center pe-5 pe-lg-0 me-5 me-lg-0">
-                            <div class="d-md-flex d-none gap-3">
-                                <a href="http://facebook.com">
-                                    <i class="ri-facebook-circle-fill fs-18"></i>
-                                </a>
-                                <a href="http://twitter.com">
-                                    <i class="ri-twitter-x-fill fs-18"></i>
-                                </a>
-                                <a href="http://linkedin.com">
-                                    <i class="ri-linkedin-fill fs-18"></i>
-                                </a>
-                                <a href="http://github.com">
-                                    <i class="ri-github-fill fs-18"></i>
-                                </a>
+                            <div class="d-md-flex d-none gap-2">
+                                @if ($empresa?->enlace_whatsapp)
+                                    <a href="{{ $empresa->enlace_whatsapp }}" target="_blank"  title="WhatsApp">
+                                        <i class="ri-whatsapp-fill fs-18"></i>
+                                    </a>
+                                @endif
+
+                                @if ($empresa?->enlace_facebook)
+                                    <a href="{{ $empresa->enlace_facebook }}" target="_blank"  title="Facebook">
+                                        <i class="ri-facebook-circle-fill fs-18"></i>
+                                    </a>
+                                @endif
+
+                                @if ($empresa?->enlace_instagram)
+                                    <a href="{{ $empresa->enlace_instagram }}" target="_blank"  title="Instagram">
+                                        <i class="ri-instagram-fill fs-18"></i>
+                                    </a>
+                                @endif
+
+                                @if ($empresa?->enlace_tiktok)
+                                    <a href="{{ $empresa->enlace_tiktok }}" target="_blank"  title="TikTok">
+                                        <i class="ri-tiktok-fill fs-18"></i>
+                                    </a>
+                                @endif
                             </div>
+
                             <div class="burger-icon burger-icon-white border rounded-3">
                                 <span class="burger-icon-top"></span>
                                 <span class="burger-icon-mid"></span>
@@ -136,53 +149,97 @@
                 <div class="offCanvas__close-icon menu-close">
                     <button><i class="ri-close-line"></i></button>
                 </div>
-                <div class="offCanvas__logo mb-5"><h3 class="mb-0">Get in touch</h3></div>
+                <div class="offCanvas__logo mb-5">
+                    <h3 class="mb-0">Contáctanos</h3>
+                </div>
                 <div class="offCanvas__side-info mb-30">
                     <div class="contact-list mb-30">
-                        <p class="fs-6 fw-medium text-200 mb-5">I'm always excited to take on new projects and collaborate with innovative minds.</p>
+                        <p class="fs-6 fw-medium text-200 mb-5">
+                            En {{ $empresa->nombre_empresa }} estamos listos para ayudarte a transformar tu entorno digital con soluciones inteligentes y a medida.
+                        </p>
+
                         <div class="mb-3">
-                            <span class="text-400 fs-5">Phone Number</span>
-                            <p class="mb-0">+1-234-567-8901</p>
+                            <span class="text-400 fs-5 text-primary-2">
+                                <i class="ri-phone-fill me-1"></i> Teléfono / WhatsApp
+                            </span>
+                            <p class="mb-0">
+                                <a href="{{ $empresa->enlace_whatsapp }}" target="_blank">{{ $empresa->telefono }}</a>
+                            </p>
                         </div>
+
                         <div class="mb-3">
-                            <span class="text-400 fs-5">Email</span>
-                            <p class="mb-0">contact@james.dev</p>
+                            <span class="text-400 fs-5 text-primary-2">
+                                <i class="ri-mail-fill me-1"></i> Email
+                            </span>
+                            <p class="mb-0">
+                                <a href="mailto:{{ $empresa->correo }}">{{ $empresa->correo }}</a>
+                            </p>
                         </div>
+
                         <div class="mb-3">
-                            <span class="text-400 fs-5">Skype</span>
-                            <p class="mb-0">JamesDeveloper</p>
+                            <span class="text-400 fs-5 text-primary-2">
+                                <i class="ri-global-line me-1"></i> Sitio web
+                            </span>
+                            <p class="mb-0">
+                                <a href="{{ $empresa->sitio_web }}" target="_blank">{{ parse_url($empresa->sitio_web, PHP_URL_HOST) }}</a>
+                            </p>
                         </div>
+
                         <div class="mb-3">
-                            <span class="text-400 fs-5">Address</span>
-                            <p class="mb-0">0811 Erdman Prairie Road, Joaville, California 90210</p>
+                            <span class="text-400 fs-5 text-primary-2">
+                                <i class="ri-map-pin-line me-1"></i> Dirección
+                            </span>
+                            <p class="mb-0">{{ $empresa->direccion }}</p>
                         </div>
                     </div>
 
                     <div class="contact-list">
-                        <p class="text-400 fs-5 mb-2">Social</p>
+                        <p class="text-400 fs-5 mb-2">
+                            <i class="ri-share-forward-fill me-1"></i> Redes sociales
+                        </p>
                         <div class="d-md-flex d-none gap-3">
-                            <a href="http://facebook.com">
-                                <i class="ri-facebook-circle-fill fs-18"></i>
-                            </a>
-                            <a href="http://twitter.com">
-                                <i class="ri-twitter-x-fill fs-18"></i>
-                            </a>
-                            <a href="http://linkedin.com">
-                                <i class="ri-linkedin-fill fs-18"></i>
-                            </a>
-                            <a href="http://github.com">
-                                <i class="ri-github-fill fs-18"></i>
-                            </a>
+                            @if($empresa->enlace_whatsapp)
+                                <a href="{{ $empresa->enlace_whatsapp }}" target="_blank" title="WhatsApp">
+                                    <i class="ri-whatsapp-fill fs-18"></i>
+                                </a>
+                            @endif
+                            @if($empresa->enlace_facebook)
+                                <a href="{{ $empresa->enlace_facebook }}" target="_blank" title="Facebook">
+                                    <i class="ri-facebook-circle-fill fs-18"></i>
+                                </a>
+                            @endif
+                            @if($empresa->enlace_instagram)
+                                <a href="{{ $empresa->enlace_instagram }}" target="_blank" title="Instagram">
+                                    <i class="ri-instagram-fill fs-18"></i>
+                                </a>
+                            @endif
+                            @if($empresa->enlace_youtube)
+                                <a href="{{ $empresa->enlace_youtube }}" target="_blank" title="YouTube">
+                                    <i class="ri-youtube-fill fs-18"></i>
+                                </a>
+                            @endif
+                            @if($empresa->enlace_github)
+                                <a href="{{ $empresa->enlace_github }}" target="_blank" title="GitHub">
+                                    <i class="ri-github-fill fs-18"></i>
+                                </a>
+                            @endif
+                            @if($empresa->enlace_tiktok)
+                                <a href="{{ $empresa->enlace_tiktok }}" target="_blank" title="TikTok">
+                                    <i class="ri-tiktok-fill fs-18"></i>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
+
             </div>
+
             <div class="offCanvas__overly"></div>
             <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar button-bg-2">
                 <div class="mobile-header-wrapper-inner">
                     <div class="mobile-header-logo">
                         <a class="d-flex main-logo align-items-center d-inline-flex" href="index.html">
-                            <img src="assets/imgs/home-page-2/template/favicon.svg" alt="zelio" />
+                            <img src="{{ asset('assets/imgs/home-page-2/template/favicon.svg') }}" alt="Person Technology" />
                             <span class="fs-4 ms-2 text-dark ">PersonTechnology</span>
                         </a>
                         <div class="burger-icon burger-icon-white border rounded-3">
@@ -196,34 +253,40 @@
                             <div class="mobile-menu-wrap mobile-header-border">
                                 <nav>
                                     <ul class="mobile-menu font-heading ps-0">
+                                        <!-- INICIO -->
+                                        <li class="nav-item">
+                                            <a class="nav-link {{ Route::is('welcome') ? 'active' : '' }}" href="{{ route('welcome') }}">Inicio</a>
+                                        </li>
+
+                                        <!-- NOSOTROS -->
                                         <li class="nav-item has-children">
-                                            <a class="nav-link active" href="#">Home</a>
+                                            <a class="nav-link" href="#">Nosotros</a>
                                             <ul class="sub-menu">
-                                                <li><a href="index.html">Landing page</a></li>
-                                                <li><a href="index-1.html">Home 1 - Designer</a></li>
-                                                <li><a href="index-2.html">Home 2 - Developer</a></li>
-                                                <li><a href="index-3.html">Home 3 - Author</a></li>
+                                                <li><a href="#quienes-somos">Quiénes somos</a></li>
+                                                <li><a href="#mision">Misión y visión</a></li>
+                                                <li><a href="#equipo">Equipo</a></li>
                                             </ul>
                                         </li>
 
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="services.html">Services</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="work.html">Portfolio</a>
+                                        <!-- SERVICIOS -->
+                                        <li class="nav-item has-children">
+                                            <a class="nav-link" href="#">Servicios</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="#servicio-web">Desarrollo Web</a></li>
+                                                <li><a href="#servicio-apps">Desarrollo de Apps</a></li>
+                                                <li><a href="#servicio-fullstack">Desarrollo Full Stack</a></li>
+                                                <li><a href="#servicio-iot">Soluciones IoT</a></li>
+                                                <li><a href="#curso-fullstack">Cursos Full Stack</a></li>
+                                                <li><a href="#servicio-soporte">Mantenimiento y Soporte</a></li>
+                                            </ul>
                                         </li>
 
+                                        <!-- CONTACTO -->
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pricing.html">Pricing</a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="blog-list.html">Blog</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#contact">Contact</a>
+                                            <a class="nav-link" href="#contacto">Contacto</a>
                                         </li>
                                     </ul>
+
                                 </nav>
                             </div>
                         </div>
@@ -236,6 +299,7 @@
 
     <main>
         <!-- prettier-ignore -->
+
         <!--Home 2 Section 1-->
         <section id="about" class="section-hero-2 position-relative pt-130 pb-3">
             <div class="container hero-2">
@@ -245,12 +309,12 @@
                             <div class="col-lg-5 ps-lg-5 text-lg-start text-center">
                                 <div class="position-relative mb-lg-0 mb-5">
                                     <video 
-                                        src="assets/video/inicio.mp4" 
+                                        src="{{ asset('assets/video/inicio.mp4') }}" 
                                         autoplay 
                                         muted 
                                         loop 
                                         playsinline 
-                                        poster="assets/video/inicio.png" 
+                                        poster="{{ asset('assets/video/inicio.png') }}" 
                                         class="img-fluid rounded w-100"
                                     >
                                         Tu navegador no admite la etiqueta de video.
@@ -266,7 +330,7 @@
                                     <div class="text-secondary-2 d-flex align-items-center">
                                         &lt;span&gt;
                                         <div class="text-dark">
-                                            <div class="typewriter"><h1 class="fs-6 fw-medium">Somos Person Technology</h1></div>
+                                            <div class="typewriter"><h1 class="fs-6 fw-medium">Desarrollamos el futuro, hoy</h1></div>
                                         </div>
                                         &lt;/span&gt;
                                     </div>
@@ -310,10 +374,11 @@
                                             <span class="fs-6 text-300 mb-2">...y pronto: Cursos Full Stack</span>
                                         </div>
                                     </div>
-                                    <a href="#contacto" class="btn me-2 text-300 ps-0 mt-4">
-                                        <i class="ri-rocket-line text-primary-2"></i>
-                                        [ Solicita tu solución digital ]
+                                   <a href="{{ asset('info/Person Technology.pdf') }}" target="_blank" class="btn me-2 text-300 ps-0 mt-4">
+                                        <i class="ri-file-list-3-line text-primary-2"></i>
+                                        [ Mira nuestra presentación empresarial ]
                                     </a>
+
                                 </div>
                             </div>
                         </div>
@@ -403,7 +468,7 @@
                                         <span class="text-linear-4 d-flex align-items-center"> Colaboración  </span>
                                     </div>
                                     <h3 class="fw-medium">
-                                        Más de +160 <span class="text-300">empresas <br /></span> confían en <span class="text-300">Person Technology_</span>
+                                        Más de +500 <span class="text-300">clientes satisfechos </span> confían en <span class="text-300">Person Technology</span>
                                     </h3>
                                     <div class="my-5 border border-1 rounded-2 p-3">
                                         <!-- Carausel Scroll -->
@@ -544,21 +609,36 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="d-flex flex-column gap-3">
-                                            <a href="mailto:info@persontechnology.net" class="d-flex align-items-center">
-                                                <i class="ri-mail-fill me-2"></i>
-                                                <span class="text-300">Email: <span class="text-secondary-2">info@persontechnology.net</span></span>
-                                            </a>
-                                            <a href="tel:+593998808775" class="d-flex align-items-center">
-                                                <i class="ri-phone-fill me-2"></i>
-                                                <span class="text-300">WhatsApp/Voz: <span class="text-secondary-2">+593 998 808 775</span></span>
-                                            </a>
-                                          
-                                            <a href="#" class="d-flex align-items-center">
-                                                <i class="ri-map-pin-fill me-2"></i>
-                                                <span class="text-300">Ubicación: <span class="text-secondary-2">Av. 9 de Octubre y 24 de Mayo , frente a CACPECO, Salcedo‑Cotopaxi, Ecuador</span></span>
-                                            </a>
-                                            </div>
+                                            @if($empresa?->correo)
+                                                <a href="mailto:{{ $empresa->correo }}" class="d-flex align-items-center">
+                                                    <i class="ri-mail-fill me-2"></i>
+                                                    <span class="text-300">Email:
+                                                        <span class="text-secondary-2">{{ $empresa->correo }}</span>
+                                                    </span>
+                                                </a>
+                                            @endif
+
+                                            @if($empresa?->telefono)
+                                                <a href="tel:{{ preg_replace('/[^0-9+]/', '', $empresa->telefono) }}" class="d-flex align-items-center">
+                                                    <i class="ri-phone-fill me-2"></i>
+                                                    <span class="text-300">WhatsApp/Voz:
+                                                        <span class="text-secondary-2">{{ $empresa->telefono }}</span>
+                                                    </span>
+                                                </a>
+                                            @endif
+
+                                            @if($empresa?->direccion)
+                                                <a href="#" class="d-flex align-items-center">
+                                                    <i class="ri-map-pin-fill me-2"></i>
+                                                    <span class="text-300">Ubicación:
+                                                        <span class="text-secondary-2">{{ $empresa->direccion }}</span>
+                                                    </span>
+                                                </a>
+                                            @endif
+                                        </div>
+
 
                                     </div>
                                 </div>
@@ -586,44 +666,44 @@
                                 <svg class="text-primary-2 me-2" xmlns="http://www.w3.org/2000/svg" width="5" height="6" viewBox="0 0 5 6" fill="none">
                                     <circle cx="2.5" cy="3" r="2.5" fill="#A8FF53" />
                                 </svg>
-                                <span class="text-linear-4 d-flex align-items-center">Lista de proyectos </span>
+                                <span class="text-linear-4 d-flex align-items-center">Proyectos recientes </span>
                             </div>
                             <div class="h-100 position-relative">
                                 <ul class="ps-3 d-flex flex-column justify-content-around h-100 position-relative">
                                     <li class="position-relative z-1">
                                         <div class="d-flex align-items-center gap-2">
-                                            <p class="text-300 text-nowrap">15 Jul:</p>
-                                            <span class="text-dark">AgroIoT – Monitoreo climático con sensores remotos</span>
+                                            {{-- <p class="text-300 text-nowrap">Web:</p> --}}
+                                            <span class="text-dark">Página institucional a medida para GAD Chiguaza</span>
                                         </div>
                                     </li>
                                     <li class="position-relative z-1">
                                         <div class="d-flex align-items-center gap-2">
-                                            <p class="text-300 text-nowrap">30 Jun:</p>
-                                            <span class="text-dark">EduConnect – Plataforma web para cursos interactivos</span>
+                                            {{-- <p class="text-300 text-nowrap">Full Stack:</p> --}}
+                                            <span class="text-dark">Sistema financiero para control de créditos – Cooperativa Credimundo</span>
                                         </div>
                                     </li>
                                     <li class="position-relative z-1">
                                         <div class="d-flex align-items-center gap-2">
-                                            <p class="text-300 text-nowrap">26 May:</p>
-                                            <span class="text-dark">SmartCityApp – App de gestión de servicios urbanos</span>
+                                            {{-- <p class="text-300 text-nowrap">IoT:</p> --}}
+                                            <span class="text-dark">Paradas inteligentes – Monitoreo de rutas en tiempo real con geocercas</span>
                                         </div>
                                     </li>
                                     <li class="position-relative z-1">
                                         <div class="d-flex align-items-center gap-2">
-                                            <p class="text-300 text-nowrap">17 Apr:</p>
-                                            <span class="text-dark">FullStackLab – Entorno de práctica para desarrolladores</span>
+                                            {{-- <p class="text-300 text-nowrap">Movilidad:</p> --}}
+                                            <span class="text-dark">Órdenes de movilización – Gestión y control para Ecuaparqueo</span>
                                         </div>
                                     </li>
                                     <li class="position-relative z-1">
                                         <div class="d-flex align-items-center gap-2">
-                                            <p class="text-300 text-nowrap">05 Mar:</p>
-                                            <span class="text-dark">InnovaTrack – Panel IoT de seguimiento logístico</span>
+                                            {{-- <p class="text-300 text-nowrap">Web/App:</p> --}}
+                                            <span class="text-dark">Sistema de generación de cartas digitales – Proyecto multiplataforma para CACTU</span>
                                         </div>
                                     </li>
-
                                 </ul>
                                 <div class="line-left position-absolute border-start z-0"></div>
                             </div>
+
                             <div class="bg-overlay position-absolute bottom-0 start-0 z-1"></div>
                         </div>
                     </div>
@@ -758,7 +838,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img class="position-absolute top-0 start-0 z-0" src="assets/imgs/home-page-2/services/bg.png" alt="zelio" />
+                        <img class="position-absolute top-0 start-0 z-0" src="assets/imgs/home-page-2/services/bg.png" alt="Person Technology" />
                     </div>
                 </div>
             </div>
@@ -854,7 +934,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img class="position-absolute top-0 start-0 z-0" src="assets/imgs/home-page-2/services/bg.png" alt="zelio" />
+                        <img class="position-absolute top-0 start-0 z-0" src="assets/imgs/home-page-2/services/bg.png" alt="Person Technology" />
                     </div>
                 </div>
             </div>
@@ -865,6 +945,7 @@
         <section id="resume" class="section-education">
             <div class="container">
                 <div class="row">
+
                     <div class="col-lg-6 pt-3">
                         <div class="rounded-3 border border-1 position-relative h-100 overflow-hidden">
                             <div class="box-linear-animation p-md-6 p-3 ">
@@ -872,91 +953,89 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" fill="none">
                                         <path class="fill-primary-2" d="M0 22.667V4.66699C0 2.45786 1.79087 0.666992 4 0.666992H22.6667C23.4031 0.666992 24 1.26395 24 2.00033V26.0003C24 26.7367 23.4031 27.3337 22.6667 27.3337H4.66667C2.08933 27.3337 0 25.2443 0 22.667ZM21.3333 24.667V20.667H4.66667C3.56209 20.667 2.66667 21.5625 2.66667 22.667C2.66667 23.7715 3.56209 24.667 4.66667 24.667H21.3333ZM9.33333 3.33366H4C3.26363 3.33366 2.66667 3.93062 2.66667 4.66699V18.4494C3.27284 18.1614 3.95093 18.0003 4.66667 18.0003H21.3333V3.33366H18.6667V14.0003L14 11.3337L9.33333 14.0003V3.33366Z" fill="#62A92B" />
                                     </svg>
-                                    <h2 class="mb-0 ms-2">Education</h2>
+                                    <p class="mb-0 ms-2 fw-bold">
+                                        Certificaciones
+                                    </p>
                                 </div>
                                 <div class="d-flex flex-column h-100 position-relative mt-5">
                                     <ul class="ps-3">
                                         <li class="position-relative z-1 mb-3">
                                             <div class="d-flex gap-2">
-                                                <p class="text-300 text-nowrap fw-regular mb-0">2020-2024:</p>
+                                                <p class="text-300 text-nowrap fw-regular mb-0">2022-2024:</p>
                                                 <div>
-                                                    <span class="text-primary-2">MIT</span>
-                                                    <p class="text-dark">Bachelor’s Degree in Computer Science</p>
+                                                    <span class="text-primary-2">Google Cloud Partner Program</span>
+                                                    <p class="text-dark">Certificación en Arquitectura Cloud y DevOps para empresas tecnológicas.</p>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="position-relative z-1 mb-3">
                                             <div class="d-flex gap-2">
-                                                <p class="text-300 text-nowrap fw-regular mb-0">2018-2019:</p>
+                                                <p class="text-300 text-nowrap fw-regular mb-0">2020-2021:</p>
                                                 <div>
-                                                    <span class="text-primary-2">Harvard University</span>
-                                                    <p class="text-dark">Certification in React and Redux, Node.js Developer Course</p>
+                                                    <span class="text-primary-2">MIT xPro</span>
+                                                    <p class="text-dark">Capacitación en Inteligencia Artificial aplicada a procesos empresariales.</p>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="position-relative z-1 mb-3">
                                             <div class="d-flex gap-2">
-                                                <p class="text-300 text-nowrap fw-regular mb-0">2015-2016:</p>
+                                                <p class="text-300 text-nowrap fw-regular mb-0">2019-2020:</p>
                                                 <div>
-                                                    <span class="text-primary-2">Stanford University</span>
-                                                    <p class="text-dark">Certification in Full Stack Web Development</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="position-relative z-1 mb-3">
-                                            <div class="d-flex gap-2">
-                                                <p class="text-300 text-nowrap fw-regular mb-0">2013-2015:</p>
-                                                <div>
-                                                    <span class="text-primary-2">University of Washington</span>
-                                                    <p class="text-dark">Certification in React and Redux, Node.js Developer Course</p>
+                                                    <span class="text-primary-2">Scrum Alliance</span>
+                                                    <p class="text-dark">Certificación en Scrum Master y metodologías ágiles para desarrollo de software.</p>
                                                 </div>
                                             </div>
                                         </li>
                                     </ul>
+
                                     <div class="line-left position-absolute top-0 border-start z-0"></div>
                                 </div>
                                 <div class="bg-overlay position-absolute bottom-0 start-0 z-1"></div>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-6 pt-3">
                         <div class="bg-3 rounded-3 border border-1 p-md-6 p-3 position-relative h-100 overflow-hidden">
                             <div class="d-flex align-items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                                     <path class="fill-primary-2" d="M20 4H28V10.6667H25.3333V6.66667H20V4ZM12 4V6.66667H6.66667V10.6667H4V4H12ZM20 28V25.3333H25.3333V21.3333H28V28H20ZM12 28H4V21.3333H6.66667V25.3333H12V28ZM4 14.6667H28V17.3333H4V14.6667Z" fill="#A8FF53" />
                                 </svg>
-                                <h2 class="mb-0 ms-2">Researched</h2>
+                                <p class="mb-0 ms-2 fw-bold">Investigación & Desarrollo</p>
+                                
                             </div>
                             <div class="d-flex flex-column h-100 position-relative mt-5">
+                                
                                 <ul class="ps-3">
                                     <li class="position-relative z-1 mb-3">
                                         <div class="d-flex gap-2">
                                             <p class="text-300 text-nowrap fw-regular mb-0">2023-2024:</p>
                                             <div>
-                                                <span class="text-primary-2">Advanced Data Analytics with Big Data Tools</span>
-                                                <p class="text-dark">Utilized big data tools for advanced analytics and insights.</p>
+                                                <span class="text-primary-2">Optimización de Modelos Predictivos</span>
+                                                <p class="text-dark">Desarrollo de soluciones basadas en IA para predicción de comportamiento de usuarios en apps móviles.</p>
                                             </div>
                                         </div>
                                     </li>
                                     <li class="position-relative z-1 mb-3">
                                         <div class="d-flex gap-2">
-                                            <p class="text-300 text-nowrap fw-regular mb-0">2021-2013:</p>
+                                            <p class="text-300 text-nowrap fw-regular mb-0">2021-2023:</p>
                                             <div>
-                                                <span class="text-primary-2">Cloud-Native Application Architectures</span>
-                                                <p class="text-dark">Studied best practices for designing cloud-native applications.</p>
+                                                <span class="text-primary-2">Automatización con IoT para Industria 4.0</span>
+                                                <p class="text-dark">Investigación en automatización de procesos logísticos mediante sensores y redes IoT.</p>
                                             </div>
                                         </div>
                                     </li>
                                     <li class="position-relative z-1 mb-3">
                                         <div class="d-flex gap-2">
-                                            <p class="text-300 text-nowrap fw-regular mb-0">2019-2020:</p>
+                                            <p class="text-300 text-nowrap fw-regular mb-0">2020-2021:</p>
                                             <div>
-                                                <span class="text-primary-2">AI-Driven User Experience Personalization</span>
-                                                <p class="text-dark">Leveraged AI to personalize user experiences based on behavior.</p>
+                                                <span class="text-primary-2">Ciberseguridad en Entornos Cloud</span>
+                                                <p class="text-dark">Estudios sobre vulnerabilidades en infraestructuras cloud y desarrollo de soluciones de protección.</p>
                                             </div>
                                         </div>
                                     </li>
                                 </ul>
+
                                 <div class="line-left position-absolute top-0 border-start z-0"></div>
                             </div>
                             <div class="bg-overlay position-absolute bottom-0 start-0 z-1"></div>
@@ -976,121 +1055,215 @@
                                 <svg class="text-primary-2 me-2" xmlns="http://www.w3.org/2000/svg" width="5" height="6" viewBox="0 0 5 6" fill="none">
                                     <circle cx="2.5" cy="3" r="2.5" fill="#A8FF53" />
                                 </svg>
-                                <span class="text-linear-4 d-flex align-items-center"> Projects </span>
+                                <span class="text-linear-4 d-flex align-items-center"> Proyectos Recientes</span>
                             </div>
-                            <h3>My Recent Works</h3>
+                            <h3>Nuestros Casos de Éxito</h3>
                             <div class="position-relative">
                                 <div class="swiper slider-two pb-3 position-relative">
+                                
                                     <div class="swiper-wrapper">
+                                        <!-- Proyecto 1: Sistema de Cartas Digital -->
                                         <div class="swiper-slide">
                                             <div class="p-lg-5 p-md-4 p-3 border border-1 mt-5 bg-3">
                                                 <div class="row">
                                                     <div class="col-lg-5">
-                                                        <img class="w-100" src="assets/imgs/home-page-2/projects/img-1.png" alt="zelio" />
+                                                        <img class="w-100" src="assets/imgs/home-page-2/projects/cactu.png" alt="Sistema de Cartas Digital" />
                                                     </div>
                                                     <div class="col-lg-7 ps-lg-5 mt-5 mt-lg-0">
-                                                        <h4 class="text-linear-4">
-                                                            Integrate AI into the <br />
-                                                            ecommerce system
-                                                        </h4>
-                                                        <p>Developed an online learning platform with course management, quizzes, and progress tracking.</p>
+                                                        <h4 class="text-linear-4">Sistema de Cartas Digital</h4>
+                                                        <p>Proyecto móvil y web para la generación de cartas digitales personalizadas y accesibles desde cualquier dispositivo.</p>
                                                         <ul class="mt-4 list-unstyled">
-                                                            <li class="text-secondary-2 mb-3 border-bottom pb-3">Project Info</li>
+                                                            <li class="text-secondary-2 mb-3 border-bottom pb-3">Información del Proyecto</li>
                                                             <li class="text-dark mb-3 border-bottom pb-3">
                                                                 <div class="d-flex justify-content-between">
-                                                                    <p class="text-dark mb-0 text-end">Client</p>
-                                                                    <p class="text-300 mb-0 text-end">Conceptual JSC</p>
+                                                                    <p class="text-dark mb-0 text-end">Cliente</p>
+                                                                    <p class="text-300 mb-0 text-end">CACTU</p>
                                                                 </div>
                                                             </li>
                                                             <li class="text-dark mb-3 border-bottom pb-3">
                                                                 <div class="d-flex justify-content-between">
-                                                                    <p class="text-dark mb-0 text-end">Completion Time</p>
-                                                                    <p class="text-300 mb-0 text-end">6 months</p>
+                                                                    <p class="text-dark mb-0 text-end">Duración</p>
+                                                                    <p class="text-300 mb-0 text-end">6 meses</p>
                                                                 </div>
                                                             </li>
                                                             <li class="text-dark mb-3 border-bottom pb-3">
                                                                 <div class="d-flex justify-content-between">
-                                                                    <p class="text-dark mb-0 text-end">Technologies</p>
-                                                                    <p class="text-300 mb-0 text-end">Node.js, React, MongoDB, Stripe</p>
+                                                                    <p class="text-dark mb-0 text-end">Tecnologías</p>
+                                                                    <p class="text-300 mb-0 text-end">Laravel, MySQL</p>
                                                                 </div>
                                                             </li>
                                                         </ul>
                                                         <div class="d-flex flex-wrap align-items-center gap-3 mt-7">
-                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
-                                                                    <path d="M11.0037 3.91421L2.39712 12.5208L0.98291 11.1066L9.5895 2.5H2.00373V0.5H13.0037V11.5H11.0037V3.91421Z" fill="#8F8F92" />
-                                                                </svg>
-                                                                Live Demo
-                                                            </a>
-                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                                                                    <path
-                                                                        d="M12.001 2.5C6.47598 2.5 2.00098 6.975 2.00098 12.5C2.00098 16.925 4.86348 20.6625 8.83848 21.9875C9.33848 22.075 9.52598 21.775 9.52598 21.5125C9.52598 21.275 9.51348 20.4875 9.51348 19.65C7.00098 20.1125 6.35098 19.0375 6.15098 18.475C6.03848 18.1875 5.55098 17.3 5.12598 17.0625C4.77598 16.875 4.27598 16.4125 5.11348 16.4C5.90098 16.3875 6.46348 17.125 6.65098 17.425C7.55098 18.9375 8.98848 18.5125 9.56348 18.25C9.65098 17.6 9.91348 17.1625 10.201 16.9125C7.97598 16.6625 5.65098 15.8 5.65098 11.975C5.65098 10.8875 6.03848 9.9875 6.67598 9.2875C6.57598 9.0375 6.22598 8.0125 6.77598 6.6375C6.77598 6.6375 7.61348 6.375 9.52598 7.6625C10.326 7.4375 11.176 7.325 12.026 7.325C12.876 7.325 13.726 7.4375 14.526 7.6625C16.4385 6.3625 17.276 6.6375 17.276 6.6375C17.826 8.0125 17.476 9.0375 17.376 9.2875C18.0135 9.9875 18.401 10.875 18.401 11.975C18.401 15.8125 16.0635 16.6625 13.8385 16.9125C14.201 17.225 14.5135 17.825 14.5135 18.7625C14.5135 20.1 14.501 21.175 14.501 21.5125C14.501 21.775 14.6885 22.0875 15.1885 21.9875C19.259 20.6133 21.9999 16.7963 22.001 12.5C22.001 6.975 17.526 2.5 12.001 2.5Z"
-                                                                        fill="#8F8F92"
-                                                                    />
-                                                                </svg>
-                                                                View on Github
-                                                            </a>
+                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">Ver Demo</a>
+                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">Ver en Github</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Proyecto 2: Órdenes de Movilización -->
                                         <div class="swiper-slide">
                                             <div class="p-lg-5 p-md-4 p-3 border border-1 mt-5 bg-3">
                                                 <div class="row">
                                                     <div class="col-lg-5">
-                                                        <img class="w-100" src="assets/imgs/home-page-2/projects/img-1.png" alt="zelio" />
+                                                        <img class="w-100" src="assets/imgs/home-page-2/projects/ecuaparqueo.png" alt="Órdenes de Movilización" />
                                                     </div>
                                                     <div class="col-lg-7 ps-lg-5 mt-5 mt-lg-0">
-                                                        <h4 class="text-linear-4">
-                                                            Integrate AI into the <br />
-                                                            ecommerce system
-                                                        </h4>
-                                                        <p>Developed an online learning platform with course management, quizzes, and progress tracking.</p>
+                                                        <h4 class="text-linear-4">Órdenes de Movilización</h4>
+                                                        <p>Sistema de gestión, control y monitoreo de órdenes de movilización, optimizado para eficiencia operativa.</p>
                                                         <ul class="mt-4 list-unstyled">
-                                                            <li class="text-secondary-2 mb-3 border-bottom pb-3">Project Info</li>
+                                                            <li class="text-secondary-2 mb-3 border-bottom pb-3">Información del Proyecto</li>
                                                             <li class="text-dark mb-3 border-bottom pb-3">
                                                                 <div class="d-flex justify-content-between">
-                                                                    <p class="text-dark mb-0 text-end">Client</p>
-                                                                    <p class="text-300 mb-0 text-end">Conceptual JSC</p>
+                                                                    <p class="text-dark mb-0 text-end">Cliente</p>
+                                                                    <p class="text-300 mb-0 text-end">Ecuaparqueo</p>
                                                                 </div>
                                                             </li>
                                                             <li class="text-dark mb-3 border-bottom pb-3">
                                                                 <div class="d-flex justify-content-between">
-                                                                    <p class="text-dark mb-0 text-end">Completion Time</p>
-                                                                    <p class="text-300 mb-0 text-end">6 months</p>
+                                                                    <p class="text-dark mb-0 text-end">Duración</p>
+                                                                    <p class="text-300 mb-0 text-end">6 meses</p>
                                                                 </div>
                                                             </li>
                                                             <li class="text-dark mb-3 border-bottom pb-3">
                                                                 <div class="d-flex justify-content-between">
-                                                                    <p class="text-dark mb-0 text-end">Technologies</p>
-                                                                    <p class="text-300 mb-0 text-end">Node.js, React, MongoDB, Stripe</p>
+                                                                    <p class="text-dark mb-0 text-end">Tecnologías</p>
+                                                                    <p class="text-300 mb-0 text-end">Laravel, React, PostgreSQL</p>
                                                                 </div>
                                                             </li>
                                                         </ul>
                                                         <div class="d-flex flex-wrap align-items-center gap-3 mt-7">
-                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
-                                                                    <path d="M11.0037 3.91421L2.39712 12.5208L0.98291 11.1066L9.5895 2.5H2.00373V0.5H13.0037V11.5H11.0037V3.91421Z" fill="#8F8F92" />
-                                                                </svg>
-                                                                Live Demo
-                                                            </a>
-                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                                                                    <path
-                                                                        d="M12.001 2.5C6.47598 2.5 2.00098 6.975 2.00098 12.5C2.00098 16.925 4.86348 20.6625 8.83848 21.9875C9.33848 22.075 9.52598 21.775 9.52598 21.5125C9.52598 21.275 9.51348 20.4875 9.51348 19.65C7.00098 20.1125 6.35098 19.0375 6.15098 18.475C6.03848 18.1875 5.55098 17.3 5.12598 17.0625C4.77598 16.875 4.27598 16.4125 5.11348 16.4C5.90098 16.3875 6.46348 17.125 6.65098 17.425C7.55098 18.9375 8.98848 18.5125 9.56348 18.25C9.65098 17.6 9.91348 17.1625 10.201 16.9125C7.97598 16.6625 5.65098 15.8 5.65098 11.975C5.65098 10.8875 6.03848 9.9875 6.67598 9.2875C6.57598 9.0375 6.22598 8.0125 6.77598 6.6375C6.77598 6.6375 7.61348 6.375 9.52598 7.6625C10.326 7.4375 11.176 7.325 12.026 7.325C12.876 7.325 13.726 7.4375 14.526 7.6625C16.4385 6.3625 17.276 6.6375 17.276 6.6375C17.826 8.0125 17.476 9.0375 17.376 9.2875C18.0135 9.9875 18.401 10.875 18.401 11.975C18.401 15.8125 16.0635 16.6625 13.8385 16.9125C14.201 17.225 14.5135 17.825 14.5135 18.7625C14.5135 20.1 14.501 21.175 14.501 21.5125C14.501 21.775 14.6885 22.0875 15.1885 21.9875C19.259 20.6133 21.9999 16.7963 22.001 12.5C22.001 6.975 17.526 2.5 12.001 2.5Z"
-                                                                        fill="#8F8F92"
-                                                                    />
-                                                                </svg>
-                                                                View on Github
-                                                            </a>
+                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">Ver Demo</a>
+                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">Ver en Github</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Proyecto 3: Paradas Inteligentes -->
+                                        <div class="swiper-slide">
+                                            <div class="p-lg-5 p-md-4 p-3 border border-1 mt-5 bg-3">
+                                                <div class="row">
+                                                    <div class="col-lg-5">
+                                                        <img class="w-100" src="assets/imgs/home-page-2/projects/geocerca.png" alt="Paradas Inteligentes" />
+                                                    </div>
+                                                    <div class="col-lg-7 ps-lg-5 mt-5 mt-lg-0">
+                                                        <h4 class="text-linear-4">Paradas Inteligentes</h4>
+                                                        <p>Plataforma de monitoreo de flotas mediante geocercas, con alertas en tiempo real y visualización de rutas.</p>
+                                                        <ul class="mt-4 list-unstyled">
+                                                            <li class="text-secondary-2 mb-3 border-bottom pb-3">Información del Proyecto</li>
+                                                            <li class="text-dark mb-3 border-bottom pb-3">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p class="text-dark mb-0 text-end">Cliente</p>
+                                                                    <p class="text-300 mb-0 text-end">Geocerca</p>
+                                                                </div>
+                                                            </li>
+                                                            <li class="text-dark mb-3 border-bottom pb-3">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p class="text-dark mb-0 text-end">Duración</p>
+                                                                    <p class="text-300 mb-0 text-end">2 años</p>
+                                                                </div>
+                                                            </li>
+                                                            <li class="text-dark mb-3 border-bottom pb-3">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p class="text-dark mb-0 text-end">Tecnologías</p>
+                                                                    <p class="text-300 mb-0 text-end">Node.js, PostgreSQL, React Native</p>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="d-flex flex-wrap align-items-center gap-3 mt-7">
+                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">Ver Demo</a>
+                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">Ver en Github</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Proyecto 4: Sistema Financiero para Cooperativa -->
+                                        <div class="swiper-slide">
+                                            <div class="p-lg-5 p-md-4 p-3 border border-1 mt-5 bg-3">
+                                                <div class="row">
+                                                    <div class="col-lg-5">
+                                                        <img class="w-100" src="assets/imgs/home-page-2/projects/credimundo.png" alt="Sistema Financiero" />
+                                                    </div>
+                                                    <div class="col-lg-7 ps-lg-5 mt-5 mt-lg-0">
+                                                        <h4 class="text-linear-4">Sistema Financiero para Cooperativa</h4>
+                                                        <p>Sistema para el control de movimientos, créditos y cuentas de clientes dentro de una cooperativa financiera.</p>
+                                                        <ul class="mt-4 list-unstyled">
+                                                            <li class="text-secondary-2 mb-3 border-bottom pb-3">Información del Proyecto</li>
+                                                            <li class="text-dark mb-3 border-bottom pb-3">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p class="text-dark mb-0 text-end">Cliente</p>
+                                                                    <p class="text-300 mb-0 text-end">Credimundo</p>
+                                                                </div>
+                                                            </li>
+                                                            <li class="text-dark mb-3 border-bottom pb-3">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p class="text-dark mb-0 text-end">Duración</p>
+                                                                    <p class="text-300 mb-0 text-end">8 meses</p>
+                                                                </div>
+                                                            </li>
+                                                            <li class="text-dark mb-3 border-bottom pb-3">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p class="text-dark mb-0 text-end">Tecnologías</p>
+                                                                    <p class="text-300 mb-0 text-end">PostgreSQL, Node.js, React</p>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="d-flex flex-wrap align-items-center gap-3 mt-7">
+                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">Ver Demo</a>
+                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">Ver en Github</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Proyecto 5: Página Web Institucional -->
+                                        <div class="swiper-slide">
+                                            <div class="p-lg-5 p-md-4 p-3 border border-1 mt-5 bg-3">
+                                                <div class="row">
+                                                    <div class="col-lg-5">
+                                                        <img class="w-100" src="assets/imgs/home-page-2/projects/chiguaza.png" alt="Página Web Institucional" />
+                                                    </div>
+                                                    <div class="col-lg-7 ps-lg-5 mt-5 mt-lg-0">
+                                                        <h4 class="text-linear-4">Página Web Institucional</h4>
+                                                        <p>Desarrollo de sitio web institucional personalizado, optimizado para dispositivos móviles y cumplimiento institucional.</p>
+                                                        <ul class="mt-4 list-unstyled">
+                                                            <li class="text-secondary-2 mb-3 border-bottom pb-3">Información del Proyecto</li>
+                                                            <li class="text-dark mb-3 border-bottom pb-3">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p class="text-dark mb-0 text-end">Cliente</p>
+                                                                    <p class="text-300 mb-0 text-end">GAD Chiguaza</p>
+                                                                </div>
+                                                            </li>
+                                                            <li class="text-dark mb-3 border-bottom pb-3">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p class="text-dark mb-0 text-end">Duración</p>
+                                                                    <p class="text-300 mb-0 text-end">2 meses</p>
+                                                                </div>
+                                                            </li>
+                                                            <li class="text-dark mb-3 border-bottom pb-3">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p class="text-dark mb-0 text-end">Tecnologías</p>
+                                                                    <p class="text-300 mb-0 text-end">Laravel, MySQL, Bootstrap 5</p>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="d-flex flex-wrap align-items-center gap-3 mt-7">
+                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">Ver Demo</a>
+                                                            <a href="#" class="text-300 border-bottom border-1 px-2 pb-2 link-hover">Ver en Github</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+
                                 </div>
                                 <div class="position-absolute bottom-0 end-0 gap-2 pb-7 pe-5 d-none d-md-flex">
                                     <div class="swiper-button-prev end-0 shadow position-relative">
@@ -1106,7 +1279,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img class="position-absolute top-0 start-0 z-0" src="assets/imgs/home-page-2/projects/bg.png" alt="zelio" />
+                        <img class="position-absolute top-0 start-0 z-0" src="assets/imgs/home-page-2/projects/bg.png" alt="Person Technology" />
                     </div>
                 </div>
             </div>
@@ -1296,7 +1469,7 @@
                         <div class="blog-card rounded-top-2 mb-lg-3 mb-md-5 mb-3">
                             <div class="blog-card__image position-relative">
                                 <div class="zoom-img rounded-2 overflow-hidden">
-                                    <img class="w-100" src="assets/imgs/home-page-2/blog/img-1.png" alt="zelio" />
+                                    <img class="w-100" src="assets/imgs/home-page-2/blog/img-1.png" alt="Person Technology" />
                                     <a class="position-absolute bottom-0 start-0 m-3 text-white-keep border border-white fw-medium px-3 py-1 fs-7 bg-white rounded-2" href="#">CEO</a>
                                     <a href="#" class="blog-card__link position-absolute top-50 start-50 translate-middle icon-md icon-shape rounded-circle">
                                         <i class="ri-arrow-right-up-line"></i>
@@ -1315,7 +1488,7 @@
                         <div class="blog-card rounded-top-2 mb-lg-3 mb-md-5 mb-3">
                             <div class="blog-card__image position-relative">
                                 <div class="zoom-img rounded-2 overflow-hidden">
-                                    <img class="w-100" src="assets/imgs/home-page-2/blog/img-2.png" alt="zelio" />
+                                    <img class="w-100" src="assets/imgs/home-page-2/blog/img-2.png" alt="Person Technology" />
                                     <a class="position-absolute bottom-0 start-0 m-3 text-white-keep border border-white fw-medium px-3 py-1 fs-7 bg-white rounded-2" href="#">Development</a>
                                     <a href="#" class="blog-card__link position-absolute top-50 start-50 translate-middle icon-md icon-shape rounded-circle">
                                         <i class="ri-arrow-right-up-line"></i>
@@ -1334,7 +1507,7 @@
                         <div class="blog-card rounded-top-2 mb-lg-3 mb-md-5 mb-3">
                             <div class="blog-card__image position-relative">
                                 <div class="zoom-img rounded-2 overflow-hidden">
-                                    <img class="w-100" src="assets/imgs/home-page-2/blog/img-3.png" alt="zelio" />
+                                    <img class="w-100" src="assets/imgs/home-page-2/blog/img-3.png" alt="Person Technology" />
                                     <a class="position-absolute bottom-0 start-0 m-3 text-white-keep border border-white fw-medium px-3 py-1 fs-7 bg-white rounded-2" href="#">Trending</a>
                                     <a href="#" class="blog-card__link position-absolute top-50 start-50 translate-middle icon-md icon-shape rounded-circle">
                                         <i class="ri-arrow-right-up-line"></i>
@@ -1361,37 +1534,30 @@
                     <div class="col-lg-7 pb-5 pb-lg-0">
                         <div class="position-relative">
                             <div class="position-relative z-2">
-                                <h3 class="text-primary-2 mb-3">Let’s connect</h3>
-                                <form action="#">
-                                    <div class="row g-3">
-                                        <div class="col-md-6 ">
-                                            <input type="text" class="form-control bg-3 border border-1 rounded-3" id="name" name="name" placeholder="Your name" aria-label="username" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control bg-3 border border-1 rounded-3" id="phone" name="phone" placeholder="Phone" aria-label="phone" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control bg-3 border border-1 rounded-3" id="email" name="email" placeholder="Emaill" aria-label="email" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control bg-3 border border-1 rounded-3" id="subject" name="subject" placeholder="Subject" aria-label="subject" />
-                                        </div>
-                                        <div class="col-12">
-                                            <textarea class="form-control bg-3 border border-1 rounded-3" id="message" name="message" placeholder="Message" aria-label="With textarea"></textarea>
-                                        </div>
-                                        <div class="col-12">
-                                            <button type="submit" class="btn btn-primary-2 rounded-2">
-                                                Send Message
-                                                <i class="ri-arrow-right-up-line"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <h3 class="text-primary-2 mb-3">¿Listo para transformar tu entorno digital?</h3>
+                                <p class="mb-4 text-300">
+                                    Cuéntanos tu idea o necesidad. En Person Technology respondemos en menos de 24h para ayudarte a crear soluciones inteligentes y personalizadas.
+                                </p>
+                                
+                                {{-- se pone el id del contacto para renderisar al section, pilas --}}
+                                @include('components.contact', ['sectionId' => 'contact'])
+
+
+                                <p class="mt-3 small text-muted">
+                                    <i class="ri-lock-fill me-1"></i> Tu información está segura con nosotros.
+                                </p>
                             </div>
+
                             <div class="z-0 bg-primary-dark rectangle-bg z-1 rounded-3"></div>
                         </div>
+
                     </div>
                     <div class="col-lg-5 d-flex flex-column ps-lg-8">
+                        
+
+
+                        {{-- Teléfono / WhatsApp --}}
+                        @if($empresa?->telefono)
                         <div class="d-flex align-items-center mb-3 position-relative d-inline-flex">
                             <div class="d-inline-block">
                                 <div class="icon-flip flex-nowrap icon-shape icon-xxl border border-1 rounded-3 bg-3">
@@ -1399,11 +1565,16 @@
                                 </div>
                             </div>
                             <div class="ps-3 h-100">
-                                <span class="text-400 fs-6">Phone Number</span>
-                                <h6 class="mb-0">+1-234-567-8901</h6>
+                                <span class="text-400 fs-6">Teléfono / WhatsApp</span>
+                                <h6 class="mb-0">{{ $empresa->telefono }}</h6>
                             </div>
-                            <a href="tel:+1-234-567-8901" class="position-absolute top-0 start-0 w-100 h-100"></a>
+                            <a href="tel:{{ preg_replace('/[^0-9+]/', '', $empresa->telefono) }}"
+                            class="position-absolute top-0 start-0 w-100 h-100"></a>
                         </div>
+                        @endif
+
+                        {{-- Email --}}
+                        @if($empresa?->correo)
                         <div class="d-flex align-items-center mb-3 position-relative d-inline-flex">
                             <div class="d-inline-block">
                                 <div class="icon-flip flex-nowrap icon-shape icon-xxl border border-1 rounded-3 bg-3">
@@ -1411,23 +1582,15 @@
                                 </div>
                             </div>
                             <div class="ps-3 h-100">
-                                <span class="text-400 fs-6">Email</span>
-                                <h6 class="mb-0">contact@william.design</h6>
+                                <span class="text-400 fs-6">Correo electrónico</span>
+                                <h6 class="mb-0">{{ $empresa->correo }}</h6>
                             </div>
-                            <a href="mailto:someone@example.com" class="position-absolute top-0 start-0 w-100 h-100"></a>
+                            <a href="mailto:{{ $empresa->correo }}" class="position-absolute top-0 start-0 w-100 h-100"></a>
                         </div>
-                        <div class="d-flex align-items-center mb-3 position-relative d-inline-flex">
-                            <div class="d-inline-block">
-                                <div class="icon-flip flex-nowrap icon-shape icon-xxl border border-1 rounded-3 bg-3">
-                                    <i class="ri-skype-fill text-primary-2 fs-26"></i>
-                                </div>
-                            </div>
-                            <div class="ps-3 h-100">
-                                <span class="text-400 fs-6">Skype</span>
-                                <h6 class="mb-0">WilliamDesignUX</h6>
-                            </div>
-                            <a href="skype:SKYPENAME?add" class="position-absolute top-0 start-0 w-100 h-100"></a>
-                        </div>
+                        @endif
+
+                        {{-- Dirección --}}
+                        @if($empresa?->direccion)
                         <div class="d-flex align-items-center mb-3 position-relative d-inline-flex">
                             <div class="d-inline-block">
                                 <div class="icon-flip flex-nowrap icon-shape icon-xxl border border-1 rounded-3 bg-3">
@@ -1435,12 +1598,32 @@
                                 </div>
                             </div>
                             <div class="ps-3 h-100">
-                                <span class="text-400 fs-6">Address</span>
-                                <h6 class="mb-0">0811 Erdman Prairie, Joaville CA</h6>
+                                <span class="text-400 fs-6">Dirección</span>
+                                <h6 class="mb-0">{{ $empresa->direccion }}</h6>
                             </div>
-                            <a href="https://maps.google.com/maps?q=1st+avenue,New+York" class="position-absolute top-0 start-0 w-100 h-100"></a>
+                            <a href="https://maps.app.goo.gl/8zCSVboF4XASkA2WA"
+                            class="position-absolute top-0 start-0 w-100 h-100"
+                            target="_blank" rel="noopener noreferrer"></a>
+                        </div>
+
+                        @endif
+
+                        
+                        <div class="mb-4">
+                            <div class="mx-auto" style="max-width: 500px;">
+                                <div class="ratio ratio-4x3 rounded-3 shadow border">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.1552928130236!2d-78.59436782588611!3d-1.0445587354079147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d47d65d8fa200b%3A0x34733f08f4ed0469!2sPerson%20Technology!5e0!3m2!1ses!2sec!4v1752438329283!5m2!1ses!2sec"
+                                        allowfullscreen
+                                        loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade"
+                                        style="border:0;"
+                                    ></iframe>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -1453,63 +1636,95 @@
             <div class="container position-relative z-1 border-top border-1 pb-2 pt-4">
                 <div class="text-center">
                     <a class="d-flex main-logo align-items-center justify-content-center mb-3" href="">
-                        <img src="assets/imgs/home-page-2/template/favicon.svg" alt="zelio" />
-                        <span class="fs-4 ms-2">James.dev</span>
+                        <img src="assets/imgs/home-page-2/template/favicon.svg" alt="Person Technology" />
+                        <span class="fs-4 ms-2">PersonTechnology</span>
                     </a>
                     <div class="d-flex justify-content-center gap-3">
-                        <a href="http://facebook.com">
-                            <i class="ri-facebook-circle-fill fs-18"></i>
-                        </a>
-                        <a href="http://twitter.com">
-                            <i class="ri-twitter-x-fill fs-18"></i>
-                        </a>
-                        <a href="http://linkedin.com">
-                            <i class="ri-linkedin-fill fs-18"></i>
-                        </a>
-                        <a href="http://github.com">
-                            <i class="ri-github-fill fs-18"></i>
-                        </a>
+                        @if ($empresa?->enlace_whatsapp)
+                            <a href="{{ $empresa->enlace_whatsapp }}" target="_blank" title="WhatsApp">
+                                <i class="ri-whatsapp-fill fs-18"></i>
+                            </a>
+                        @endif
+
+                        @if ($empresa?->enlace_facebook)
+                            <a href="{{ $empresa->enlace_facebook }}" target="_blank" title="Facebook">
+                                <i class="ri-facebook-circle-fill fs-18"></i>
+                            </a>
+                        @endif
+
+                        @if ($empresa?->enlace_instagram)
+                            <a href="{{ $empresa->enlace_instagram }}" target="_blank" title="Instagram">
+                                <i class="ri-instagram-fill fs-18"></i>
+                            </a>
+                        @endif
+
+                        @if ($empresa?->enlace_youtube)
+                            <a href="{{ $empresa->enlace_youtube }}" target="_blank" title="YouTube">
+                                <i class="ri-youtube-fill fs-18"></i>
+                            </a>
+                        @endif
+
+                        @if ($empresa?->enlace_github)
+                            <a href="{{ $empresa->enlace_github }}" target="_blank" title="GitHub">
+                                <i class="ri-github-fill fs-18"></i>
+                            </a>
+                        @endif
+
+                        @if ($empresa?->enlace_tiktok)
+                            <a href="{{ $empresa->enlace_tiktok }}" target="_blank" title="TikTok">
+                                <i class="ri-tiktok-fill fs-18"></i>
+                            </a>
+                        @endif
                     </div>
+
                     <div class="navigation d-flex align-items-center justify-content-center flex-wrap gap-4 my-4">
-                        <a href="#about" class="fs-6"> About me </a>
-                        <a href="#resume" class="fs-6"> Resume </a>
-                        <a href="#services" class="fs-6"> Services </a>
-                        <a href="#portfolio" class="fs-6"> Portfolio </a>
-                        <a href="#blog" class="fs-6"> Blog </a>
-                        <a href="#contact" class="fs-6"> Contact </a>
+                        <!-- Aquí el copyright -->
+                    <div class="text-center text-300 small pb-4">
+                        &copy; {{ date('Y') }} <strong>Person Technology</strong>. Todos los derechos reservados. Desarrollamos el futuro, hoy.
                     </div>
+                    </div>
+
+                    
+
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Scroll top -->
-<div class="btn-scroll-top style-btn-2">
-    <svg class="progress-square svg-content" width="100%" height="100%" viewBox="0 0 40 40">
-        <path d="M8 1H32C35.866 1 39 4.13401 39 8V32C39 35.866 35.866 39 32 39H8C4.13401 39 1 35.866 1 32V8C1 4.13401 4.13401 1 8 1Z" />
-    </svg>
-</div>
+    <div class="btn-scroll-top style-btn-2">
+        <svg class="progress-square svg-content" width="100%" height="100%" viewBox="0 0 40 40">
+            <path d="M8 1H32C35.866 1 39 4.13401 39 8V32C39 35.866 35.866 39 32 39H8C4.13401 39 1 35.866 1 32V8C1 4.13401 4.13401 1 8 1Z" />
+        </svg>
+    </div>
 
-    <!-- Libs JS -->
-<script src="assets/js/vendors/jquery-3.7.1.min.js"></script>
-<script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
-<script src="assets/js/vendors/swiper-bundle.min.js"></script>
-<script src="assets/js/vendors/aos.js"></script>
-<script src="assets/js/vendors/wow.min.js"></script>
-<script src="assets/js/vendors/smart-stick-nav.js"></script>
-<script src="assets/js/vendors/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/vendors/gsap.min.js"></script>
-<script src="assets/js/vendors/imagesloaded.pkgd.min.js"></script>
-<script src="assets/js/vendors/isotope.pkgd.min.js"></script>
-<script src="assets/js/vendors/ScrollTrigger.min.js"></script>
-<script src="assets/js/vendors/jquery.carouselTicker.min.js"></script>
-<script src="assets/js/vendors/jquery.odometer.min.js"></script>
-<script src="assets/js/vendors/jquery.appear.js"></script>
-<script src="assets/js/vendors/gsap-custom.js"></script>
-<script src="assets/js/imageRevealHover.js"></script>
-<script src="assets/js/vendors/aat.min.js"></script>
-<!-- Theme JS -->
-<script src="assets/js/main.js"></script>
+        <!-- Libs JS -->
+    <script src="assets/js/vendors/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/vendors/swiper-bundle.min.js"></script>
+    <script src="assets/js/vendors/aos.js"></script>
+    <script src="assets/js/vendors/wow.min.js"></script>
+    <script src="assets/js/vendors/smart-stick-nav.js"></script>
+    <script src="assets/js/vendors/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/vendors/gsap.min.js"></script>
+    <script src="assets/js/vendors/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/vendors/isotope.pkgd.min.js"></script>
+    <script src="assets/js/vendors/ScrollTrigger.min.js"></script>
+    <script src="assets/js/vendors/jquery.carouselTicker.min.js"></script>
+    <script src="assets/js/vendors/jquery.odometer.min.js"></script>
+    <script src="assets/js/vendors/jquery.appear.js"></script>
+    <script src="assets/js/vendors/gsap-custom.js"></script>
+    <script src="assets/js/imageRevealHover.js"></script>
+    <script src="assets/js/vendors/aat.min.js"></script>
+    <!-- Theme JS -->
+    <script src="assets/js/main.js"></script>
+
+    @stack('scripts')
+
+ 
+
+
+
 
     </body>
 </html>

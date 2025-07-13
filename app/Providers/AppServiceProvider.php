@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\EmpresaInfo;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer(['welcome'], function ($view) {
+            $empresa = EmpresaInfo::first(); // o find(1)
+            $view->with('empresa', $empresa);
+        });
     }
 }
