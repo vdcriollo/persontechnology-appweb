@@ -56,7 +56,7 @@
                             class="form-control bg-3 border border-1 rounded-3 @error('nombre_completo') is-invalid @enderror"
                             value="{{ old('nombre_completo') }}" 
                             required 
-                            placeholder=""
+                            placeholder=" "
                             id="nombre_completo"
                             aria-required="true"
                         >
