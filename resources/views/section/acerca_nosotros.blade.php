@@ -24,7 +24,8 @@
 
                     <div class="col-lg-6 mx-lg-auto col-md-12">
                         <div class="p-lg-0 p-md-8 p-3">
-                           <div class="text-secondary-2 d-flex align-items-center">
+                           <!-- Línea superior con animación tipo máquina de escribir -->
+                            <div class="text-secondary-2 d-flex align-items-center">
                                 <div class="text-dark">
                                     <div class="typewriter">
                                         <h1 class="fs-6 fw-medium">Desarrollamos el futuro, hoy</h1>
@@ -32,10 +33,19 @@
                                 </div>
                             </div>
 
-                            <h1 class="fs-50 my-3">
+                            <!-- Título principal -->
+                            <!-- Versión para escritorio -->
+                            <h1 class="fs-1 fw-bold my-3 d-none d-md-block">
                                 Desarrollamos <span class="text-linear-4">{Web, Apps e IoT}</span> escalables
                                 <span class="flicker">_</span>
                             </h1>
+
+                            <!-- Versión para móviles -->
+                            <p class="fs-5 fw-medium my-3 d-block d-md-none">
+                                Desarrollamos <span class="text-linear-4">{Web, Apps e IoT}</span> escalables
+                                <span class="flicker">_</span>
+                            </p>
+
 
                             <p class="mb-6 text-secondary-2">
                                 <span class="text-dark">Creamos soluciones digitales a la medida como</span>
