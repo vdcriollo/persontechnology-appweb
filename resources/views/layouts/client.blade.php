@@ -332,35 +332,76 @@
 
                                         <!-- EMPRESA -->
                                         <li class="nav-item has-children">
-                                            <a class="nav-link {{ Route::is('empresa.*') ? 'active' : '' }}" href="#">
-                                                Empresa
-                                            </a>
+                                            <a class="nav-link {{ Route::is('empresa.*') ? 'text-primary-2' : '' }}" href="#">Empresa</a>
                                             <ul class="sub-menu {{ Route::is('empresa.*') ? 'show' : '' }}">
                                                 <li>
                                                     <a class="{{ Route::is('empresa.quienes-somos') ? 'text-primary-2' : '' }}" href="{{ route('empresa.quienes-somos') }}">
                                                         Quiénes somos
                                                     </a>
                                                 </li>
-                                                <li><a class="{{ Route::is('empresa.mision-vision') ? 'text-primary-2' : '' }}" href="{{ route('empresa.mision-vision') }}">Misión y visión</a></li>
-                                                <li><a class="{{ Route::is('empresa.nuestro-equipo') ? 'text-primary-2' : '' }}" href="{{ route('empresa.nuestro-equipo') }}">Equipo</a></li>
+                                                <li>
+                                                    <a class="{{ Route::is('empresa.mision-vision') ? 'text-primary-2' : '' }}" href="{{ route('empresa.mision-vision') }}">
+                                                        Misión y visión
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ Route::is('empresa.nuestro-equipo') ? 'text-primary-2' : '' }}" href="{{ route('empresa.nuestro-equipo') }}">
+                                                        Equipo
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ Route::is('empresa.nuestro-proceso-trabajo') ? 'text-primary-2' : '' }}" href="{{ route('empresa.nuestro-proceso-trabajo') }}">
+                                                        Proceso de trabajo
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </li>
 
-
-                                        <!-- SOLUCIONES -->
+                                        <!-- SERVICIOS -->
                                         <li class="nav-item has-children">
-                                            <a class="nav-link" href="#">Soluciones</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="#servicio-web">Desarrollo Web</a></li>
-                                                <li><a href="#servicio-apps">Aplicaciones Móviles</a></li>
-                                                <li><a href="#servicio-fullstack">Full Stack & Backend</a></li>
-                                                <li><a href="#servicio-iot">Soluciones IoT</a></li>
-                                                <li><a href="#curso-fullstack">Academia Full Stack</a></li>
-                                                <li><a href="#servicio-soporte">Soporte Técnico</a></li>
+                                            <a class="nav-link {{ Route::is('servicios.*') ? 'text-primary-2' : '' }}" href="#">Servicios</a>
+                                            <ul class="sub-menu {{ Route::is('servicios.*') ? 'show' : '' }}">
+                                                <li>
+                                                    <a class="{{ Route::is('servicios.desarrollo-web') ? 'text-primary-2' : '' }}" href="{{ route('servicios.desarrollo-web') }}">
+                                                        Desarrollo Web
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ Route::is('servicios.aplicaciones-mobiles') ? 'text-primary-2' : '' }}" href="{{ route('servicios.aplicaciones-mobiles') }}">
+                                                        Aplicaciones Móviles
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ Route::is('servicios.desarrollo-full-stack') ? 'text-primary-2' : '' }}" href="{{ route('servicios.desarrollo-full-stack') }}">
+                                                        Desarrollo Full Stack
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ Route::is('servicios.soluciones-iot') ? 'text-primary-2' : '' }}" href="{{ route('servicios.soluciones-iot') }}">
+                                                        Soluciones IoT
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ Route::is('servicios.academia-full-stack') ? 'text-primary-2' : '' }}" href="{{ route('servicios.academia-full-stack') }}">
+                                                        Academia Full Stack
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="{{ Route::is('servicios.soporte-tecnico') ? 'text-primary-2' : '' }}" href="{{ route('servicios.soporte-tecnico') }}">
+                                                        Soporte Técnico
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </li>
 
-                                        <!-- COMUNIDAD -->
+                                        <!-- CONTACTO -->
+                                        <li class="nav-item">
+                                            <a class="nav-link {{ Route::is('contacto.index') ? 'text-primary-2' : '' }}" href="{{ route('contacto.index') }}">
+                                                Contacto
+                                            </a>
+                                        </li>
+
+                                        {{-- <!-- COMUNIDAD (si se activa en el futuro)
                                         <li class="nav-item has-children">
                                             <a class="nav-link" href="#">Comunidad</a>
                                             <ul class="sub-menu">
@@ -369,9 +410,10 @@
                                                 <li><a href="#faq">Preguntas Frecuentes</a></li>
                                                 <li><a href="#soporte">Soporte Técnico</a></li>
                                             </ul>
-                                        </li>
+                                        </li> --> --}}
                                     </ul>
                                 </nav>
+
 
                             </div>
                         </div>

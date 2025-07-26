@@ -29,7 +29,7 @@
                                         </p>
                                     </div>
                                     <div class="mt-3">
-                                        <a href="#servicio-web" class="text-primary-2">Ver más</a>
+                                        <a href="{{ route('servicios.desarrollo-web') }}" class="text-primary-2">Ver más</a>
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                         </p>
                                     </div>
                                     <div class="mt-3">
-                                        <a href="#servicio-apps" class="text-primary-2">Ver más</a>
+                                        <a href="{{ route('servicios.aplicaciones-mobiles') }}" class="text-primary-2">Ver más</a>
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                                         </p>
                                     </div>
                                     <div class="mt-3">
-                                        <a href="#servicio-fullstack" class="text-primary-2">Ver más</a>
+                                        <a href="{{ route('servicios.desarrollo-full-stack') }}" class="text-primary-2">Ver más</a>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                         </p>
                                     </div>
                                     <div class="mt-3">
-                                        <a href="#servicio-iot" class="text-primary-2">Ver más</a>
+                                        <a href="{{ route('servicios.soluciones-iot') }}" class="text-primary-2">Ver más</a>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                                         </p>
                                     </div>
                                     <div class="mt-3">
-                                        <a href="#curso-fullstack" class="text-primary-2">Ver más</a>
+                                        <a href="{{ route('servicios.academia-full-stack') }}" class="text-primary-2">Ver más</a>
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
                                         </p>
                                     </div>
                                     <div class="mt-3">
-                                        <a href="#servicio-soporte" class="text-primary-2">Ver más</a>
+                                        <a href="{{ route('servicios.soporte-tecnico') }}" class="text-primary-2">Ver más</a>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@
                         <div class="text-center pt-60">
                             <p class="text-300">
                                 ¿Listo para impulsar tu entorno digital con <span class="text-dark">soluciones innovadoras?</span><br />
-                                <a href="#contacto" class="text-primary-2">Conversemos ahora.</a>
+                                <a href="{{ route('contacto.index') }}" class="text-primary-2">Conversemos ahora.</a>
                             </p>
                         </div>
                     </div>
