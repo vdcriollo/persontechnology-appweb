@@ -24,15 +24,27 @@
 
                     <div class="col-lg-6 mx-lg-auto col-md-12">
                         <div class="p-lg-0 p-md-8 p-3">
-                            <div class="text-secondary-2 d-flex align-items-center">
-                                &lt;span&gt;
+                           <div class="text-secondary-2 d-flex align-items-center">
                                 <div class="text-dark">
-                                    <div class="typewriter"><h1 class="fs-6 fw-medium">Desarrollamos el futuro, hoy</h1></div>
+                                    <div class="typewriter">
+                                        <h1 class="fs-6 fw-medium">Desarrollamos el futuro, hoy</h1>
+                                    </div>
                                 </div>
-                                &lt;/span&gt;
                             </div>
-                            <h1 class="fs-50 my-3">Desarrollamos <span class="text-linear-4">{Web, Apps e IoT}</span> escalables<span class="flicker">_</span></h1>
-                            <p class="mb-6 text-secondary-2">&lt;p&gt;<span class="text-dark">Creamos soluciones digitales a la medida como</span> <span class="text-secondary-2">plataformas web</span>, <span class="text-secondary-2">apps móviles</span>, <span class="text-secondary-2">sistemas IoT</span> y <span class="text-secondary-2">cursos full stack</span><span class="text-dark">... todo para transformar el entorno digital de tu empresa con tecnología innovadora.</span>&lt;/p&gt;</p>
+
+                            <h1 class="fs-50 my-3">
+                                Desarrollamos <span class="text-linear-4">{Web, Apps e IoT}</span> escalables
+                                <span class="flicker">_</span>
+                            </h1>
+
+                            <p class="mb-6 text-secondary-2">
+                                <span class="text-dark">Creamos soluciones digitales a la medida como</span>
+                                <span class="text-secondary-2"> plataformas web</span>,
+                                <span class="text-secondary-2"> apps móviles</span>,
+                                <span class="text-secondary-2"> sistemas IoT</span> y
+                                <span class="text-secondary-2"> cursos full stack</span>
+                                <span class="text-dark">... todo para transformar el entorno digital de tu empresa con tecnología innovadora.</span>
+                            </p>
 
                             <div class="row">
                                 <div class="col-7">
