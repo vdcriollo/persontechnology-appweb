@@ -14,6 +14,7 @@ Route::get('/', function () {
 
 // enviar contacto post contactoController
 Route::post('/enviar-contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
+Route::get('/contacto', [ContactoController::class, 'index'])->name('contacto.index');
 
 
 

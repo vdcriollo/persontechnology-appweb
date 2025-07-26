@@ -24,7 +24,14 @@ class AppServiceProvider extends ServiceProvider
     {
             Carbon::setLocale('es');
 
-        View::composer(['layouts.client','welcome','section.contacto','servicios.academia-full-stack','empresa.proceso-trabajo'], function ($view) {
+        View::composer([
+            'layouts.client',
+            'welcome',
+            'section.contacto',
+            'servicios.academia-full-stack',
+            'empresa.proceso-trabajo',
+
+        ], function ($view) {
             $empresa = EmpresaInfo::first(); // o find(1)
             $view->with('empresa', $empresa);
         });

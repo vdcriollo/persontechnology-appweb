@@ -31,4 +31,9 @@ class ContactoController extends Controller
 
         return back()->with('success', 'Tu mensaje ha sido enviado correctamente. Revisa tu correo para una copia.');
     }
+
+    public function index()
+    {
+        return view('contacto.index');
+    }   
 }

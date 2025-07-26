@@ -151,8 +151,11 @@
                                             
                                         </ul>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ Route::is('contacto.index')?'active':'' }}" href="{{ route('contacto.index') }}">Contacto</a>
+                                    </li>
 
-                                    <!-- COMUNIDAD -->
+                                    {{-- <!-- COMUNIDAD -->
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownComunidad" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Comunidad
@@ -163,7 +166,7 @@
                                             <li><a class="dropdown-item" href="#faq">Preguntas Frecuentes</a></li>
                                             <li><a class="dropdown-item" href="#soporte">Soporte Técnico</a></li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                 </ul>
 
 
