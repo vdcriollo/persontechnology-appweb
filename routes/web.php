@@ -6,9 +6,17 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EmpresaInfoController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    // Artisan::call('cache:clear');
+    // Artisan::call('config:clear');
+    // Artisan::call('config:cache');
+    // Artisan::call('storage:link');
+    // Artisan::call('key:generate');
+    // Artisan::call('migrate:fresh --seed');
+
     return view('welcome');
 })->name('welcome');
 
