@@ -310,7 +310,7 @@
             <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar button-bg-2">
                 <div class="mobile-header-wrapper-inner">
                     <div class="mobile-header-logo">
-                        <a class="d-flex main-logo align-items-center d-inline-flex" href="index.html">
+                        <a class="d-flex main-logo align-items-center d-inline-flex" href="{{ route('welcome') }}">
                             <img src="{{ asset('assets/imgs/home-page-2/template/favicon.svg') }}" alt="Person Technology" />
                             <span class="fs-4 ms-2 text-dark ">PersonTechnology</span>
                         </a>

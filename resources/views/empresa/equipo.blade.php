@@ -57,7 +57,7 @@
                     <div class="card-custom">
                         <div class="card__inner bg-3 p-lg-6 p-md-4 p-3">
                             <div class="card__image-container zoom-img position-relative">
-                                <img class="card__image" src="{{ asset('assets/imgs/equipo/2.png') }}" alt="Fabián López" />
+                                <img class="card__image" src="{{ asset('assets/imgs/equipo/3.png') }}" alt="Fabián López" />
                             </div>
                             <div class="card__content px-md-4 px-3">
                                 <div class="d-flex align-items-center text-secondary-2">
@@ -84,7 +84,7 @@
                     <div class="card-custom">
                         <div class="card__inner bg-3 p-lg-6 p-md-4 p-3">
                             <div class="card__image-container zoom-img position-relative">
-                                <img class="card__image" src="{{ asset('assets/imgs/equipo/3.png') }}" alt="Edison Manay" />
+                                <img class="card__image" src="{{ asset('assets/imgs/equipo/2.png') }}" alt="Edison Manay" />
                             </div>
                             <div class="card__content px-md-4 px-3">
                                 <div class="d-flex align-items-center text-secondary-2">
